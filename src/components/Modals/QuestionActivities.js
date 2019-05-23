@@ -4,7 +4,7 @@ const QuestionActivities = (props) =>
   <QuestionActivitiesStyle>
     {
       props.Options.map((option, index) =>
-        <div key = {index} style = {{paddingRight: '.5rem'}}><OptionStyle onClick = {props.SaveData} OptionLength = {option.length}>{option}</OptionStyle></div>
+        <div key = {index} style = {{paddingRight: '.5rem'}}><OptionStyle OptionLength = {option.length}>{option}</OptionStyle></div>
       )
     }
   </QuestionActivitiesStyle>

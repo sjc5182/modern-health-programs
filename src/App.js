@@ -11,7 +11,7 @@ class App extends React.Component{
     super(props)
     this.state = {
       programs: [],
-      individualProgram: {},
+      programOrder: '',
       isWelcome: true
     }
   }
@@ -33,17 +33,30 @@ class App extends React.Component{
       .catch(error => {console.log(error)})
   }
 
-  subProgram = () => {
-    const sigleProgram = this.state.programs.slice(0,1)
-    this.setState(state => ({
-      individualProgram: {...sigleProgram[0]},
-      isWelcome: !state.isWelcome
-    }))
+  subProgram = (programOrder) => {
+    const { isWelcome, programs } = this.state
+    this.setState(() => 
+      {
+        if(programOrder === 0) {
+          return {
+            programOrder,
+            isWelcome: !isWelcome
+          }
+        }else if(programOrder > programs.length-1){
+            return {
+              isWelcome: !isWelcome
+            }
+          }
+        return {
+          programOrder
+        }
+      }
+    )
   }
 
   render(){
-    const { programs, individualProgram }= this.state
-    console.log(individualProgram)
+    const { programs, programOrder }= this.state
+    const individualProgram = programs[programOrder]
     return (
       <div className = 'App-container'>
         <div className = 'Bot-container-left'>
@@ -54,15 +67,15 @@ class App extends React.Component{
         </div>
         <div className = 'Bot-container-right'>
           {
-            this.state.isWelcome ? <WelcomePage StartProgram = {this.subProgram}/> :
+            this.state.isWelcome ? <WelcomePage StartProgram = {this.subProgram} /> :
             <>
               <div className = 'Bot-title-wrapper'>
                 <div className = 'Bot-container-title'>
-                  {this.state.individualProgram.name}
+                  {individualProgram.name}
                 </div>
               </div>
               <div className = 'Bot-content-wapper'>
-                <SectionModals Sections = {individualProgram.sections}/>
+                <SectionModals Sections = {individualProgram.sections} ProgramSwitch = {this.subProgram} ProgramOrder = {programOrder}/>
               </div>
             </>
           }

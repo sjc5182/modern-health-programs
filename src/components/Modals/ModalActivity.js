@@ -54,10 +54,10 @@ export default class ModalActivity extends React.Component {
           }
         </div>
         <div className = 'button-wrapper'>
-          <button className = 'button-back' onClick = {this.props.BackToProgram}>Back</button>
-          <button className = 'button-continue'>Continue</button>
+          <button className = 'button-back' onClick = {this.props.BackToSection}>Back</button>
+          <button className = 'button-continue' onClick = {() => {this.props.ActivityContinue(this.props.SectionOrder)}}>Continue</button>
         </div>
       </ModalActivityStyle>
-      )
+    )
   } 
 }
