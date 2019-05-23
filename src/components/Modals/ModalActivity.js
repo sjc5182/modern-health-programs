@@ -3,7 +3,14 @@ import { ModalActivityStyle } from '../../styled-components/ModalActivity/style'
 import QuestionActivities from './QuestionActivities'
 
 export default class ModalActivity extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      answer: '',
+      arrAnswer: []
 
+    }
+  }
   getPartChar = (partChar) => {
     switch(partChar) {
       case 0: 
@@ -19,12 +26,29 @@ export default class ModalActivity extends React.Component {
     }
   }
 
-  saveData = () =>{
-    console.log('hello');
+  handleActivities = () => {
+    const arrAnswerCopy = this.state.arrAnswer.slice()
+    if(arrAnswerCopy.indexOf(this.state.answer) === -1){
+      arrAnswerCopy.push(this.state.answer)
+    }
+    this.setState({
+      arrAnswer: [...arrAnswerCopy]
+    }, ()=>{
+      this.props.ActivityContinue(this.props.SectionOrder)
+    })
+    
   }
+
+  handleGetAnswer = (answer) => {
+    this.setState({
+      answer
+    })
+  }
+
   render(){
-    const singleSection = this.props.Section[this.props.SectionOrder]
-    console.log(this.props)
+    const { Section, SectionOrder } = this.props
+    const singleSection = Section[SectionOrder]
+    console.log(this.state.arrAnswer)
     return (
       <ModalActivityStyle>
         <div className = 'section-title'>{`Part ${this.getPartChar(this.props.SectionOrder)}: ${singleSection.name}`}</div>
@@ -46,7 +70,10 @@ export default class ModalActivity extends React.Component {
                 ? 
                   <div key = {index} className = 'question-prompt'>
                     {question.prompt} 
-                    <QuestionActivities SaveData = {this.saveData} Options = {question.options} />
+                    <QuestionActivities 
+                      Options = {question.options}
+                      GetAnswer = {this.handleGetAnswer}
+                    />
                   </div> 
                 : 
                   null
@@ -55,7 +82,9 @@ export default class ModalActivity extends React.Component {
         </div>
         <div className = 'button-wrapper'>
           <button className = 'button-back' onClick = {this.props.BackToSection}>Back</button>
-          <button className = 'button-continue' onClick = {() => {this.props.ActivityContinue(this.props.SectionOrder)}}>Continue</button>
+          <button className = 'button-continue' onClick = {this.handleActivities}>
+            Continue
+          </button>
         </div>
       </ModalActivityStyle>
     )

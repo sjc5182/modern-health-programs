@@ -12,7 +12,8 @@ class App extends React.Component{
     this.state = {
       programs: [],
       programOrder: '',
-      isWelcome: true
+      isWelcome: true,
+      activitiesArr: []
     }
   }
 
@@ -55,14 +56,19 @@ class App extends React.Component{
   }
 
   render(){
-    const { programs, programOrder }= this.state
+    const { programs, programOrder, activitiesArr }= this.state
     const individualProgram = programs[programOrder]
     return (
       <div className = 'App-container'>
         <div className = 'Bot-container-left'>
           <div className = 'Bot-sideBar-title'>Programs</div>
           {
-            programs.map((programName, index) => <Section key = {index} ProgramName = {programName}/>)
+            programs.map((programName, index) => 
+              <Section 
+                key = {index} 
+                ProgramName = {programName}
+              />
+            )
           }
         </div>
         <div className = 'Bot-container-right'>
@@ -75,7 +81,12 @@ class App extends React.Component{
                 </div>
               </div>
               <div className = 'Bot-content-wapper'>
-                <SectionModals Sections = {individualProgram.sections} ProgramSwitch = {this.subProgram} ProgramOrder = {programOrder}/>
+                <SectionModals 
+                  Sections = {individualProgram.sections} 
+                  ProgramSwitch = {this.subProgram} 
+                  ProgramOrder = {programOrder}
+                  ActivitiesStore = {activitiesArr}
+                />
               </div>
             </>
           }
