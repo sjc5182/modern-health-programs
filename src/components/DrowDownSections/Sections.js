@@ -17,6 +17,8 @@ import SectionsList from '../DrowDownSections/SectionList'
 
   render(){
     const { ProgramName } = this.props
+
+    console.log(localStorage.getItem(ProgramName.name))
     return(
       <Fragment>
         <div className = 'sideBar-progarm-box'>{ProgramName.name}

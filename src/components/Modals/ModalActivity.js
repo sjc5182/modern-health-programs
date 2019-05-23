@@ -35,6 +35,7 @@ export default class ModalActivity extends React.Component {
       arrAnswer: [...arrAnswerCopy]
     }, ()=>{
       this.props.ActivityContinue(this.props.SectionOrder)
+      localStorage.setItem(this.props.ProgramName, JSON.stringify(this.state.arrAnswer))
     })
     
   }
@@ -48,7 +49,7 @@ export default class ModalActivity extends React.Component {
   render(){
     const { Section, SectionOrder } = this.props
     const singleSection = Section[SectionOrder]
-    console.log(this.state.arrAnswer)
+    console.log(singleSection.activities.some(question => question.type === 'Question'))
     return (
       <ModalActivityStyle>
         <div className = 'section-title'>{`Part ${this.getPartChar(this.props.SectionOrder)}: ${singleSection.name}`}</div>
@@ -63,23 +64,27 @@ export default class ModalActivity extends React.Component {
           </div>
           <img src={singleSection.image} className = 'section-image' alt = {singleSection.image} />
         </div>
-        <div className = 'question-wrapper'>
-          {
-            singleSection.activities.map((question, index) => 
-              question.type === "Question" 
-                ? 
-                  <div key = {index} className = 'question-prompt'>
-                    {question.prompt} 
-                    <QuestionActivities 
-                      Options = {question.options}
-                      GetAnswer = {this.handleGetAnswer}
-                    />
-                  </div> 
-                : 
-                  null
+        {
+          singleSection.activities.some(question => question.type === 'Question')?
+          <div className = 'question-wrapper'>
+            {
+              singleSection.activities.map((question, index) => 
+                question.type === "Question" 
+                  ? 
+                    <div key = {index} className = 'question-prompt'>
+                      {question.prompt} 
+                      <QuestionActivities 
+                        Options = {question.options}
+                        GetAnswer = {this.handleGetAnswer}
+                      />
+                    </div> 
+                  : 
+                    null
               )
-          }
-        </div>
+            }
+          </div>
+          : null
+        }
         <div className = 'button-wrapper'>
           <button className = 'button-back' onClick = {this.props.BackToSection}>Back</button>
           <button className = 'button-continue' onClick = {this.handleActivities}>

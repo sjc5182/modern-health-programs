@@ -80,9 +80,10 @@ class App extends React.Component{
                   {individualProgram.name}
                 </div>
               </div>
-              <div className = 'Bot-content-wapper'>
+              <div className = 'Bot-content-wrapper'>
                 <SectionModals 
-                  Sections = {individualProgram.sections} 
+                  Sections = {individualProgram.sections}
+                  ProgramName = {individualProgram.name}
                   ProgramSwitch = {this.subProgram} 
                   ProgramOrder = {programOrder}
                   ActivitiesStore = {activitiesArr}

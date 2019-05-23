@@ -38,22 +38,19 @@ import ProgramModal from '../components/Modals/ProgramModal'
     }
   }
 
-  getActivities = () => {
-
-  }
-  
   render(){
-    const { Sections } = this.props
+    const { Sections, ProgramName } = this.props
     return(
       !this.state.isActivity 
         ? 
           <ProgramModal programList = {Sections} ModalSelect = {this.selectModal}/>
         : 
           <ModalActivity 
-            SectionOrder = {this.state.getModalOrder} 
-            Section = {Sections} BackToSection = {this.backToSection} 
+            SectionOrder = {this.state.getModalOrder}
+            ProgramName = {ProgramName}
+            Section = {Sections} 
+            BackToSection = {this.backToSection} 
             ActivityContinue = {this.activityContinue}
-            GetActivityValue = {this.getActivities}
           />
     )
   }

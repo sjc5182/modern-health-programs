@@ -57,7 +57,7 @@ export const ModalActivityStyle = styled.div`
     border-top: 3px solid #dee7f2;
     display: flex;
     justify-content: space-between;
-    padding: 1.5rem 2rem 0 1.5rem;
+    padding: .5rem 2rem 0 1.5rem;
   }
   .button-back {
     height: 2.5rem;

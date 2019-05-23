@@ -9,6 +9,11 @@ export const SectionsModalStyle = styled.div`
   justify-content: space-between;
   border-radius: 1rem;
   margin: 0 .25rem;
+  cursor: pointer;
+   &:hover{
+    box-shadow: rgba(189, 207, 217, 0.42) 0px 16px 50px 0px;
+    border: 3px solid #d3d9e2;
+   }
   .img-size {
     width: 12rem;
     height: 12rem;
