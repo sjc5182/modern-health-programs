@@ -75,9 +75,8 @@ export default class ModalActivity extends React.Component {
                 : null 
             )}
           </div>
-          <div className = 'image-wrapper'>
-            <img src={singleSection.image} className = 'section-image' alt = {singleSection.image} />
-          </div>
+          <img src={singleSection.image} className = 'section-image' alt = {singleSection.image} />
+        
         </div>
           {/* singleSection.activities.some(question => question.type === 'Question') */}
           <div className = 'question-wrapper'>

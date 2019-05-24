@@ -17,12 +17,11 @@ export const ModalActivityStyle = styled.div`
 
   .section-list-wrapper {
     width: 100%;
-    min-height: 60%;
     display: flex
   }
 
   .list-activities {
-    width: 50%;
+    width: 80%;
   }
 
   ul.activitiesList {
@@ -35,14 +34,15 @@ export const ModalActivityStyle = styled.div`
     padding-top: 1rem;
     list-style-position: outside;
   }
-  .image-wrapper {
-    width: 50%;
-    height: 25rem;
-  }
   .section-image {
-    width: 80%;
     height: 20rem;
   }
+  @media only screen and (max-width: 768px){
+    .section-image {
+      width:50%;
+    }
+  }
+  
   .question-wrapper {
     height: 8rem;
     width: 100%
@@ -63,6 +63,11 @@ export const ModalActivityStyle = styled.div`
     justify-content: space-between;
     padding: .5rem 2rem 0 1.5rem;
   }
+  @media only screen and (max-width: 768px){
+  .button-wrapper {
+    margin-top: 6rem
+  }
+}
   .button-back {
     height: 2.5rem;
     width: 11rem;
