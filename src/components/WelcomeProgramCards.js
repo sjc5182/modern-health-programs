@@ -22,7 +22,7 @@ export default class WelcomeProgramCards extends React.Component{
         <div className = 'program-card-deck-wrapper'>
           {
             this.props.ProgramList.map((program, index) => 
-            <div key = {index} value = {index} className = 'deck-size ' onClick = {this.handleOrderValue}>
+            <button key = {index} value = {index} className = 'deck-size ' onClick = {this.handleOrderValue}>
               <h1 className = 'deck-name'>
                 {program.name}
               </h1>
@@ -31,7 +31,7 @@ export default class WelcomeProgramCards extends React.Component{
                   {program.description}
                 </p>
               </div>
-            </div>)
+            </button>)
           } 
         </div>
         {

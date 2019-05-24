@@ -80,8 +80,7 @@ export default class ModalActivity extends React.Component {
             <img src={singleSection.image} className = 'section-image' alt = {singleSection.image} />
           </div>
         </div>
-        {
-          singleSection.activities.some(question => question.type === 'Question')?
+          {/* singleSection.activities.some(question => question.type === 'Question') */}
           <div className = 'question-wrapper'>
             {
               singleSection.activities.map((question, index) => 
@@ -99,13 +98,8 @@ export default class ModalActivity extends React.Component {
               )
             }
           </div>
-          : null
-        }
         <div className = 'button-wrapper'>
-          {
-            
-              <button className = 'button-back' onClick = {this.handleBackButton}>Back</button> 
-          }
+          <button className = 'button-back' onClick = {this.handleBackButton}>Back</button> 
           <button className = 'button-continue' onClick = {this.handleActivities}>
             Continue
           </button>

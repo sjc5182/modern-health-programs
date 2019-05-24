@@ -74,10 +74,12 @@ export const ModalActivityStyle = styled.div`
     font-weight: 700;
     color: #969baa;
     background: white;
+    outline-color: none;
+    outline: none;
     cursor: pointer;
       &:hover{
-        background: #265e68;
-        color: white;
+        background: #dee7f2;
+        color: #265e68;
         outline-color: none;
         outline: none;
         border: none;
@@ -95,9 +97,16 @@ export const ModalActivityStyle = styled.div`
     color: white;
     background: #265e68;
     cursor: pointer;
-      &:focus{
-        outline-color: none;
-        outline: none;
-      }
+    &:hover{
+      background: #dee7f2;
+      color: #265e68;
+      outline-color: none;
+      outline: none;
+      border: none;
+    }
+    &:focus{
+      outline-color: none;
+      outline: none;
+    }
   }
 `

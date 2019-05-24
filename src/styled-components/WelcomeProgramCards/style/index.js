@@ -28,6 +28,10 @@ export const WelcomeProgramCardsStyle = styled.div`
       border-radius: 0.5rem;
       border: 3px solid #dee7f2;
       cursor: pointer;
+      &:hover{
+        background-color: #ededf1;
+        border-color: #c6cad7
+      }
       .deck-name {
         width: auto;
         height: 3rem;
@@ -37,6 +41,11 @@ export const WelcomeProgramCardsStyle = styled.div`
         line-height: 3rem;
         text-align: center;
         margin: auto;
+      }
+      &:focus {
+        background: #e3e4e8;
+        outline-color: none;
+        outline: none;
       }
       .deck-description-wrapper {
         height: 12rem;
@@ -49,11 +58,12 @@ export const WelcomeProgramCardsStyle = styled.div`
           font-size: 1.2rem;
           font-weight: 300;
           color: #969baa;
-          padding-bottom: 3rem;
+          padding-bottom: 1.5rem;
         }
       }
+      }
     }
-  }
+    
   .button-start {
     width: 8rem;
     height: 3rem;
@@ -65,5 +75,11 @@ export const WelcomeProgramCardsStyle = styled.div`
     color: white;
     outline: none;
     cursor: pointer;
+    &:hover{
+      background-image: linear-gradient( to top,#0fa0d8,#53d6cf );
+    }
+    &:focus{
+      border: 3px solid white;
+    }
   }
 `
