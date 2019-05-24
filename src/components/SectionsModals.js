@@ -19,10 +19,17 @@ import ProgramModal from '../components/Modals/ProgramModal'
     }))
   }
 
-  backToSection = () => {
-    this.setState(state => ({
-      isActivity: !state.isActivity,
-    }))
+  backToSection = (activity) => {
+    if(activity>0){
+      this.setState({
+        getModalOrder: activity-1
+      })
+    }else{
+      this.setState(state => ({
+        isActivity: !state.isActivity,
+      }))
+
+    }
   }
 
   activityContinue = (activity) => {
@@ -34,12 +41,13 @@ import ProgramModal from '../components/Modals/ProgramModal'
       this.setState(state => ({
         isActivity: !state.isActivity
       }))
-      this.props.ProgramSwitch(this.props.ProgramOrder + 1);
+      this.props.ProgramSwitch(Number(this.props.ProgramOrder) + 1);
     }
   }
 
   render(){
     const { Sections, ProgramName } = this.props
+    console.log(Sections)
     return(
       !this.state.isActivity 
         ? 

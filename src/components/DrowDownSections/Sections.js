@@ -16,19 +16,20 @@ import SectionsList from '../DrowDownSections/SectionList'
   }
 
   render(){
-    const { ProgramName } = this.props
-
-    console.log(localStorage.getItem(ProgramName.name))
+    const { ProgramName, NavOrder } = this.props
     return(
       <Fragment>
         <div className = 'sideBar-progarm-box'>{ProgramName.name}
           {!this.state.toggle 
-          ? <i className="fas fa-chevron-up" onClick = {() => this.toggle()} style = {{paddingRight: '1rem'}} />
-          : <i className="fas fa-chevron-down" onClick = {() => this.toggle()} style = {{paddingRight: '1rem'}} />}
+          ? <i className="fas fa-chevron-up" onClick = {this.toggle} style = {{paddingRight: '1rem'}} />
+          : <i className="fas fa-chevron-down" onClick = {this.toggle} style = {{paddingRight: '1rem'}} />}
         </div>
         {this.state.toggle 
           ? 
-            <SectionsList List = {ProgramName.sections}/>
+            <SectionsList 
+              Program = {ProgramName} 
+              NavOrder = {NavOrder}
+            />
           :
             null
         }

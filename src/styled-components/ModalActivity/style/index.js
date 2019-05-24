@@ -17,7 +17,7 @@ export const ModalActivityStyle = styled.div`
 
   .section-list-wrapper {
     width: 100%;
-    height: auto;
+    min-height: 60%;
     display: flex
   }
 
@@ -35,9 +35,13 @@ export const ModalActivityStyle = styled.div`
     padding-top: 1rem;
     list-style-position: outside;
   }
-  .section-image {
+  .image-wrapper {
     width: 50%;
     height: 25rem;
+  }
+  .section-image {
+    width: 80%;
+    height: 20rem;
   }
   .question-wrapper {
     height: 8rem;

@@ -27,17 +27,29 @@ export default class ModalActivity extends React.Component {
   }
 
   handleActivities = () => {
-    const arrAnswerCopy = this.state.arrAnswer.slice()
-    if(arrAnswerCopy.indexOf(this.state.answer) === -1){
-      arrAnswerCopy.push(this.state.answer)
+    const arrAnswerForward = this.state.arrAnswer.slice()
+    if(arrAnswerForward.indexOf(this.state.answer) === -1){
+      arrAnswerForward.push(this.state.answer)
+    }else{
+      arrAnswerForward.push('No Answer')
     }
     this.setState({
-      arrAnswer: [...arrAnswerCopy]
+      arrAnswer: [...arrAnswerForward]
     }, ()=>{
       this.props.ActivityContinue(this.props.SectionOrder)
       localStorage.setItem(this.props.ProgramName, JSON.stringify(this.state.arrAnswer))
     })
-    
+  }
+
+  handleBackButton = () => {
+    const arrAnswerBack = this.state.arrAnswer.slice()
+    arrAnswerBack.pop()
+    this.setState({
+      arrAnswer: [...arrAnswerBack]
+    }, ()=>{
+      this.props.BackToSection(this.props.SectionOrder)
+      localStorage.setItem(this.props.ProgramName, JSON.stringify(this.state.arrAnswer))
+    })
   }
 
   handleGetAnswer = (answer) => {
@@ -49,7 +61,7 @@ export default class ModalActivity extends React.Component {
   render(){
     const { Section, SectionOrder } = this.props
     const singleSection = Section[SectionOrder]
-    console.log(singleSection.activities.some(question => question.type === 'Question'))
+    console.log(SectionOrder)
     return (
       <ModalActivityStyle>
         <div className = 'section-title'>{`Part ${this.getPartChar(this.props.SectionOrder)}: ${singleSection.name}`}</div>
@@ -58,11 +70,15 @@ export default class ModalActivity extends React.Component {
             {singleSection.activities.map((activity, index) => 
               activity.type === "Text" 
                 ?
-                  <ul key = {index} className = 'activitiesList'><li>{activity.content}</li></ul>
+                  <ul key = {index} className = 'activitiesList'>
+                    <li>{activity.content}</li>
+                  </ul>
                 : null 
             )}
           </div>
-          <img src={singleSection.image} className = 'section-image' alt = {singleSection.image} />
+          <div className = 'image-wrapper'>
+            <img src={singleSection.image} className = 'section-image' alt = {singleSection.image} />
+          </div>
         </div>
         {
           singleSection.activities.some(question => question.type === 'Question')?
@@ -86,7 +102,10 @@ export default class ModalActivity extends React.Component {
           : null
         }
         <div className = 'button-wrapper'>
-          <button className = 'button-back' onClick = {this.props.BackToSection}>Back</button>
+          {
+            
+              <button className = 'button-back' onClick = {this.handleBackButton}>Back</button> 
+          }
           <button className = 'button-continue' onClick = {this.handleActivities}>
             Continue
           </button>
