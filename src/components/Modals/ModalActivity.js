@@ -61,7 +61,6 @@ export default class ModalActivity extends React.Component {
   render(){
     const { Section, SectionOrder } = this.props
     const singleSection = Section[SectionOrder]
-    console.log(SectionOrder)
     return (
       <ModalActivityStyle>
         <div className = 'section-title'>{`Part ${this.getPartChar(this.props.SectionOrder)}: ${singleSection.name}`}</div>

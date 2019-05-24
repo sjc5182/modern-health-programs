@@ -12,7 +12,7 @@ export default class WelcomeProgramCards extends React.Component{
     })
   }
 
-  help = () =>{
+  handleStart = () =>{
     this.props.StartProgram(this.state.programIndexValue)
   }
   render(){
@@ -37,7 +37,7 @@ export default class WelcomeProgramCards extends React.Component{
         {
           this.state.programIndexValue!=='' 
             ?
-              <button className = 'button-start' onClick = {this.help}>
+              <button className = 'button-start' onClick = {this.handleStart}>
                 <span>Start</span>
               </button>
             :

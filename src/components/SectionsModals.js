@@ -47,7 +47,6 @@ import ProgramModal from '../components/Modals/ProgramModal'
 
   render(){
     const { Sections, ProgramName } = this.props
-    console.log(Sections)
     return(
       !this.state.isActivity 
         ? 
