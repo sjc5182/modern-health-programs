@@ -30,8 +30,6 @@ export default class ModalActivity extends React.Component {
     const arrAnswerForward = this.state.arrAnswer.slice()
     if(arrAnswerForward.indexOf(this.state.answer) === -1 && this.state.answer !== ''){
       arrAnswerForward.push(this.state.answer)
-    }else if(this.state.answer === ''){
-      arrAnswerForward.push('No Answer')
     }else {
       arrAnswerForward.push('No Answer')
     }
