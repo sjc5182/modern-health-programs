@@ -76,8 +76,8 @@ class App extends React.Component{
               :
                 <>
                   <div className = 'Bot-title-wrapper'>
-                    <div className = 'Bot-container-title' onClick = {this.mainProgram}>
-                      <div className = 'chevron-left'>
+                    <div className = 'Bot-container-title' >
+                      <div className = 'chevron-left' onClick = {this.mainProgram}>
                         <i className="fas fa-chevron-left"></i>
                       </div>
                       {individualProgram.name}

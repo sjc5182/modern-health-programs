@@ -69,6 +69,7 @@
 .chevron-left {
   color: #aaaeb3;
   padding-right: 12px;
+  cursor: pointer;
 }
 .Bot-content-wrapper {
   display: flex;
