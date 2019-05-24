@@ -82,4 +82,10 @@ export const WelcomeProgramCardsStyle = styled.div`
       border: 3px solid white;
     }
   }
+
+  @media only screen and (max-width: 1100px){
+  .button-start{
+    margin: 6rem 0 0 0
+  }
+}
 `
